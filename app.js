@@ -9,13 +9,18 @@ var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var problemsRouter = require('./routes/problems');
 var instructorRouter = require('./routes/instrucors');
+var checkresultRouter = require('./routes/checkresult');
 var app = express();
 
 app.use(function (req, res, next) {
   res.locals.messages = require('express-messages')(req, res);
   next();
 });
+
+//display port on Console
+app.listen(port, () => console.log("[success] task 1 : listening on port " + port));
 
 app.use(session({
   secret: 'keyboard cat',
@@ -43,5 +48,6 @@ app.get('*',function(req,res,next){
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/instructors', instructorRouter);
-
+app.use('/problems',problemsRouter);
+app.use('/checkresult', checkresultRouter);
 module.exports = app;
