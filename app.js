@@ -19,9 +19,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-//display port on Console
-app.listen(port, () => console.log("[success] task 1 : listening on port " + port));
-
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
