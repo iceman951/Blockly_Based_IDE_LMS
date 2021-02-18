@@ -21,7 +21,7 @@ Object.size = function (obj) {
 router.post("/", (req, res, next) => {
   let countCorrect = 0;
   async function checkAnswer() {
-    let resProblem = await axios.get("http://localhost:5000/problems/" + req.body.problem_id);
+    let resProblem = await axios.get("https://enigmatic-island-26001.herokuapp.com/problems/" + req.body.problem_id);
     let resAnswer = req.body.content;
 
     let size = Object.size(resProblem.data.solution);
