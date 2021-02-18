@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+</head>
+
+<body>
+    <%- include('layout'); -%>
+        <div class="container">
+            <h3 align="center">กลุ่มเรียน</h3>
+            <% if(locals.groups){ %>
+                <% Object.values(groups).forEach(function(grouped){%>
+
+                    <h5 class="card-title">คลาส: <%= grouped.title %>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">อาจารย์ : <%= grouped.instructor_id %>
+                    </h6>
+                    <p class="card-text">
+                        <%= grouped.description %>
+                    </p>
+                <%})%>
+            </div>
+            <%}%>
+</body>
+
+</html>
