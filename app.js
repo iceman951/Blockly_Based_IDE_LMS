@@ -11,8 +11,9 @@ var cors = require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var problemsRouter = require('./routes/problems');
-var instructorRouter = require('./routes/instrucors');
+var instructorRouter = require('./routes/instructors');
 var checkresultRouter = require('./routes/checkresult');
+var groupsRouter = require('./routes/groups');
 var app = express();
 
 app.use(function (req, res, next) {
@@ -49,4 +50,5 @@ app.use('/users', usersRouter);
 app.use('/instructors', instructorRouter);
 app.use('/problems',problemsRouter);
 app.use('/checkresult', checkresultRouter);
+app.use('/groups', groupsRouter);
 module.exports = app;

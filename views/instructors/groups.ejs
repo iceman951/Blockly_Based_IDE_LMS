@@ -8,6 +8,53 @@
 </head>
 <body>
     <%- include('../layout'); -%>
-    <p>instructors</p>
+    <div class="container">
+        <h2 align="center">Hello : <%= instructor.fname %></h2>
+        <br>
+        <h5>My Group</h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">GroupID</th>
+              <th scope="col">GroupName</th>
+              <th scope="col">View Students</th>
+              <th scope="col">View Lesson</th>
+              <th scope="col">Add Lesson</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if(instructor.groups){%>
+            <% for (var result of instructor.groups){ %>
+            <tr>
+              <td><%= result.group_id %></td>
+              <td><%= result.title %></td>
+              <td><a href="#" class="btn btn-success">View Students</a></td>
+              <td><a href="#" class="btn btn-success">View Lesson</a></td>
+              <td><a href="#" class="btn btn-primary">Add Lesson</a></td>
+            </tr>
+            <% } %>
+            <% } %>
+          </tbody>
+        </table>
+        <br>
+        <h5>เพิ่มกลุ่ม</h5>
+        <hr>
+        <form class="form-group" action="/groups/register" method="post">
+          <div class="form-group">
+            <label for="">รหัสกลุ่ม</label>
+            <input type="text" name="group_id" value="" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">ชื่อกลุ่ม</label>
+            <input type="text" name="title" value="" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">คำอธิบาย</label>
+            <textarea name="description" rows="8" cols="80" class="form-control"></textarea>
+          </div>
+          <input type="hidden" name="instructor_id" value="<%= instructor.instructor_id %>">
+          <input type="submit" name="" value="สร้างกลุ่ม" class="btn btn-primary">
+        </form>
+      </div>
 </body>
 </html>
