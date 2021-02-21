@@ -11,19 +11,20 @@
     <div class="container">
 
         <br>
-        <h5>Students List</h5>
+        <h5>รายชื่อนักเรียน</h5>
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">GroupID</th>
+              <th scope="col">StudentID</th>
               <th scope="col">Name</th>
               <th scope="col">Email</th>
               <th scope="col">View Lesson</th>
             </tr>
           </thead>
           <tbody>
-            <% if(students.Student_Section){%>
-            <% for (var result of students){ %>
+
+            <% if(locals.students){%>
+            <% for (var result of locals.students){ %>
             <tr>
               <td><%= result.Student_ID %></td>
               <td><%= result.Student_Name %></td>

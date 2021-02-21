@@ -39,9 +39,9 @@ module.exports.getStudentsByEmail = function(Student_Email, callback) {
 
 module.exports.getStudentsByGroupID = function(group_id, callback) {
     var query = {
-        group_id: group_id
+        Student_Section : group_id
     }
-    Student.find({query}, callback);
+    Student.find(query, callback);
 }
 
 // module.exports.register = function(info, callback) {
