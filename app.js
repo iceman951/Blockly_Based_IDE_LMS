@@ -14,6 +14,8 @@ var problemsRouter = require('./routes/problems');
 var instructorRouter = require('./routes/instructors');
 var checkresultRouter = require('./routes/checkresult');
 var groupsRouter = require('./routes/groups');
+var studentRouter = require('./routes/students');
+var lessonRouter = require('./routes/lessons');
 var app = express();
 
 app.use(function (req, res, next) {
@@ -51,4 +53,6 @@ app.use('/instructors', instructorRouter);
 app.use('/problems',problemsRouter);
 app.use('/checkresult', checkresultRouter);
 app.use('/groups', groupsRouter);
+app.use('/students', studentRouter);
+app.use('/lessons', lessonRouter);
 module.exports = app;

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groups</title>
+</head>
+<body>
+    <%- include('../layout'); -%>
+    <div class="container">
+
+        <br>
+        <h5>Students List</h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">GroupID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">View Lesson</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if(students.Student_Section){%>
+            <% for (var result of students){ %>
+            <tr>
+              <td><%= result.Student_ID %></td>
+              <td><%= result.Student_Name %></td>
+              <td><%= result.Student_Email %></td>
+              <td><a href="#" class="btn btn-success">View Lesson</a></td>
+            </tr>
+            <% } %>
+            <% } %>
+          </tbody>
+        </table>
+        <br>
+      </div>
+</body>
+</html>

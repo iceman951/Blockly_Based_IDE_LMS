@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesons</title>
+</head>
+<body>
+    <%- include('layout'); -%>
+    <div class="container">
+        <br>
+        <h5>Lessons</h5>
+
+          <tbody>
+            <% if(locals.lessons){%>
+                <% for (var result of locals.lessons){ %>
+                    <h4>บทเรียนที่ <%= result.lessonID %></h4>
+                    <h5>เรื่อง <%= result.name %></h5>
+                    <p>คำอธิบาย</p>
+                    <p><%= result.description %></p>
+                <% } %>
+            <% } %>
+          </tbody>
+
+      </div>
+</body>
+</html>
