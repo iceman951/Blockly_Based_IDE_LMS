@@ -5,7 +5,6 @@ var Groups=require('../models/groups');
 
 router.get('/groups/:id', function(req, res, next) {
     Student.getStudentsByGroupID(req.params.id,function(err,students){
-        console.log("route students:",students);
         res.render('groups/students',{students: students});
     });
 });
