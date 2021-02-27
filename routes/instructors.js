@@ -22,5 +22,5 @@ router.get('/groups', function(req, res, next) {
 //               res.location('/instructors/classes');
 //               res.redirect('/instructors/classes');
 //   });
-  
+
 module.exports = router;

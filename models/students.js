@@ -44,6 +44,14 @@ module.exports.getStudentsByGroupID = function(group_id, callback) {
     Student.find(query, callback);
 }
 
+module.exports.deleteStudentByStudentID = function(student_id, callback) {
+  var query = {
+    Student_ID: student_id
+  }
+  Student.deleteOne(query, callback);
+  console.log("deleted student_id:" + student_id);
+}
+
 // module.exports.register = function(info, callback) {
 //     student_user=info["student_user"];
 //     class_id=info["class_id"];

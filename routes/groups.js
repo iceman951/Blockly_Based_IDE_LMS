@@ -31,4 +31,9 @@ router.post('/register',function(req,res,next){
     res.redirect('/instructors/groups');
 });
 
+router.get('/',function(req,res,next) {
+       Group.getGroups(function(err,groups){
+              res.status(200).send()
+       })
+})
 module.exports = router;

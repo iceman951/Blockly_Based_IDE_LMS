@@ -42,13 +42,13 @@ done(err, user);
 passport.use(new LocalStrategy(function(username, password, done) {
 User.getUserByUserName(username, function(err, user) {
 if (err) throw err;
-console.log(user);
+console.log("Login by ",user.username);
 if (!user) {
     return done(null, false);
 }
 User.comparePassword(password, user.password, function(err, isMatch) {
   if (err) return err;
-  console.log(isMatch);
+  console.log("username and password isMatch? : ",isMatch);
   if (isMatch) {
     return done(null, user);
   } else {
