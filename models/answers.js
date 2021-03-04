@@ -28,5 +28,19 @@ var answerSchema=mongoose.Schema({
 var Answer = module.exports = mongoose.model('answers',answerSchema)
 
 module.exports.getAnswers=function(callback,limit){
-      Answer.find(callback).limit(limit)
+  Answer.find(callback).limit(limit)
+}
+
+module.exports.getAnswersByLessonID = function(lesson_id, callback) {
+  var query = {
+      lesson_id : lesson_id
+  }
+  Answer.find(query, callback);
+}
+
+module.exports.getAnswersByProblemID = function(problem_id, callback) {
+  var query = {
+      problem_id : problem_id
+  }
+  Answer.find(query, callback);
 }
