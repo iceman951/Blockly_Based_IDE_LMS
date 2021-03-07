@@ -15,6 +15,9 @@ var answerSchema=mongoose.Schema({
     student_id:{
       type: String
     },
+    group_id:{
+      type: String
+    },
     lesson_id:{
       type: String
     },
@@ -31,16 +34,18 @@ module.exports.getAnswers=function(callback,limit){
   Answer.find(callback).limit(limit)
 }
 
-module.exports.getAnswersByLessonID = function(lesson_id, callback) {
+module.exports.getAnswersByLessonID = function(group_id, lesson_id, callback) {
   var query = {
-      lesson_id : lesson_id
+    group_id: group_id,
+    lesson_id : lesson_id
   }
   Answer.find(query, callback);
 }
 
-module.exports.getAnswersByProblemID = function(problem_id, callback) {
+module.exports.getAnswersByGroupIDandProblemID = function(group_id, problem_id, callback) {
   var query = {
-      problem_id : problem_id
+    group_id: group_id,
+    problem_id : problem_id
   }
   Answer.find(query, callback);
 }

@@ -36,6 +36,14 @@
           </tbody>
         </table>
         <br>
+
+        <% if(locals.students){%>
+        <form class="form-group" action="/answers/problem/<%= locals.section_id %>/101" method="get">
+          <input type="submit" name="" value="ตรวจแบบฝึกหัด" class="btn btn-success">
+        </form>
+        <% } %>
+
+        <br>
         <h5>ลบนักเรียน</h5>
           <form class="form-group" action="/students/delete" method="post">
             <div class="form-group">

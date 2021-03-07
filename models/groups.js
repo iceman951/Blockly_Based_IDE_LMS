@@ -47,26 +47,3 @@ module.exports.getGroupID=function(group_id,callback){
 module.exports.saveNewGroup=function(newGroup,callback){
       newGroup.save(callback);
 }
-
-// module.exports.addLesson = function(info, callback) {
-//   lession_number = info["lesson_number"];
-//   lesson_title = info["lesson_title"];
-//   lesson_body = info["lesson_body"];
-//   class_id = info["class_id"];
-//   var query = {
-//     class_id: class_id
-//   }
-//   Classes.findOneAndUpdate(
-//     query,{
-//       $push:{
-//         "lesson":{
-//           lesson_number:lession_number,
-//           lesson_title : lesson_title,
-//           lesson_body :lesson_body
-//         }
-//       }
-//     },{
-//         safe: true,
-//         upsert: true
-//       },callback)
-// }

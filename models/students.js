@@ -24,9 +24,10 @@ var studentSchema = mongoose.Schema({
     Student_Section: {
         type: String
     },
-    Student_Progress: {
-        type: Array
-    }
+    Student_Progress: [{
+      learning: { type: Array},
+      exercise: { type: Object}
+    }]
 });
 var Student = module.exports = mongoose.model('students', studentSchema)
   
@@ -52,23 +53,9 @@ module.exports.deleteStudentByStudentID = function(student_id, callback) {
   console.log("deleted student_id:" + student_id);
 }
 
-// module.exports.register = function(info, callback) {
-//     student_user=info["student_user"];
-//     class_id=info["class_id"];
-//     class_title=info["class_title"];
-//     var query = {
-//         email: student_user
-//     }
-//     Student.findOneAndUpdate(
-//         query,{
-//             $push:{
-//               "classes":{
-//                 class_id:class_id,
-//                 class_title : class_title
-//               }
-//             }
-//         },{
-//         safe:true,
-//         upsert:true
-//     },callback)
-// }
+module.exports.replaceExerciseStatusByStudentIDandProblemID = function(student_id, problem_id, callback) {
+  var query = {
+    Student_ID: student_id,
+  }
+  Student.updateOne(query, {$set:{[`Student_Progress.exercise.${problem_id}`] : true}}, callback);
+}
