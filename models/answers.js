@@ -26,6 +26,9 @@ var answerSchema=mongoose.Schema({
     },
     content:{
       type: String
+    },
+    checked: {
+      type: Boolean
     }
 });
 var Answer = module.exports = mongoose.model('answers',answerSchema)
@@ -37,7 +40,8 @@ module.exports.getAnswers=function(callback,limit){
 module.exports.getAnswersByLessonID = function(group_id, lesson_id, callback) {
   var query = {
     group_id: group_id,
-    lesson_id : lesson_id
+    lesson_id : lesson_id,
+    checked: false
   }
   Answer.find(query, callback);
 }
@@ -45,7 +49,18 @@ module.exports.getAnswersByLessonID = function(group_id, lesson_id, callback) {
 module.exports.getAnswersByGroupIDandProblemID = function(group_id, problem_id, callback) {
   var query = {
     group_id: group_id,
-    problem_id : problem_id
+    problem_id : problem_id,
+    checked: false
   }
   Answer.find(query, callback);
+}
+
+module.exports.setCheckedAnswers = function(student_id, group_id, lesson_id, problem_id, callback) {
+  var query = {
+    student_id: student_id,
+    group_id: group_id,
+    lesson_id: lesson_id,
+    problem_id: problem_id
+  }
+  Answer.updateOne(query, {checked: true}, callback);
 }

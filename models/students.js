@@ -53,9 +53,10 @@ module.exports.deleteStudentByStudentID = function(student_id, callback) {
   console.log("deleted student_id:" + student_id);
 }
 
-module.exports.replaceExerciseStatusByStudentIDandProblemID = function(student_id, problem_id, callback) {
+module.exports.giveScore = function(student_id, problem_id, callback) {
   var query = {
     Student_ID: student_id,
   }
-  Student.updateOne(query, {$set:{[`Student_Progress.exercise.${problem_id}`] : true}}, callback);
+  console.log(student_id, problem_id)
+  Student.updateOne(query, {$set:{[`Student_Score.${problem_id}`] : true }}, callback);
 }

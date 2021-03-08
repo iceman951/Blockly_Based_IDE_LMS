@@ -30,4 +30,21 @@ router.post('/', function(req, res, next) {
     });
 });
 
+router.post('/checked', function(req, res, next) {
+    var student_id = req.body.student_id;
+    var group_id = req.body.group_id;
+    var lesson_id = req.body.lesson_id;
+    var problem_id = req.body.problem_id;
+    var checked = req.body.isTrue;
+    if(checked == "ถูก") checked = true;
+    else checked = false
+    console.log(student_id, group_id, lesson_id, problem_id, checked);
+    // Answer.setCheckedAnswers(student_id, group_id, lesson_id, problem_id, function(err) {
+    //     res.redirect('back');
+    // });
+    Student.giveScore(student_id, problem_id, function(err) {
+        res.redirect('back');
+    })
+});
+
 module.exports = router;

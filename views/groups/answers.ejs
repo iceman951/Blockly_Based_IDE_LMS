@@ -38,20 +38,20 @@
     <br>
     <div class="container">
       <h5>คำตอบนักเรียน</h5>
-      <%= locals.group_id %>
+      <p>กลุ่ม <%= locals.group_id %></p>
       <br>
       <div class='row'>
 
         <div class='col-2'>
           <div class="list-group">
             <a href="/answers/lesson/<%= locals.group_id %>/1" class="list-group-item list-group-item-action list-group-item-primary">บทที่ 1</a>
-            <a href="/answers/problem/<%= locals.group_id %>/101" class="list-group-item list-group-item-action">ข้อ 101</a>
+            <a href="/answers/problem/<%= locals.group_id %>/101" class="list-group-item list-group-item-action">ข้อ 1.1</a>
             <a href="/answers/lesson/<%= locals.group_id %>/2" class="list-group-item list-group-item-action list-group-item-primary">บทที่ 2</a>
-            <a href="/answers/problem/<%= locals.group_id %>/201" class="list-group-item list-group-item-action">ข้อ 201</a>
-            <a href="/answers/problem/<%= locals.group_id %>/202" class="list-group-item list-group-item-action">ข้อ 202</a>
-            <a href="/answers/problem/<%= locals.group_id %>/203" class="list-group-item list-group-item-action">ข้อ 203</a>
+            <a href="/answers/problem/<%= locals.group_id %>/201" class="list-group-item list-group-item-action">ข้อ 2.1</a>
+            <a href="/answers/problem/<%= locals.group_id %>/202" class="list-group-item list-group-item-action">ข้อ 2.2</a>
+            <a href="/answers/problem/<%= locals.group_id %>/203" class="list-group-item list-group-item-action">ข้อ 2.3</a>
             <a href="/answers/lesson/<%= locals.group_id %>/3" class="list-group-item list-group-item-action list-group-item-primary">บทที่ 3</a>
-            <a href="/answers/problem/<%= locals.group_id %>/301" class="list-group-item list-group-item-action">ข้อ 301</a>
+            <a href="/answers/problem/<%= locals.group_id %>/301" class="list-group-item list-group-item-action">ข้อ 3.1</a>
           
           </div>
         </div>
@@ -377,7 +377,7 @@
                   var workspace = Blockly.inject('blocklyDiv',
                     {
                       media: 'https://unpkg.com/blockly/media/',
-                      toolbox: document.getElementById('toolbox')
+                      // toolbox: document.getElementById('toolbox')
                     });
                   var xml = Blockly.Xml.textToDom(xml_text);
                   Blockly.Xml.domToWorkspace(xml, workspace);
@@ -385,9 +385,13 @@
               </div>
 
               <div class="col">
-                <form class="" action="" method="post">
-                  <input type="submit" class="btn btn-success" value="ถูก">
-                  <input type="submit" class="btn btn-danger" value="ผิด">
+                <form class="" action="/answers/checked" method="post">
+                  <input type="submit" name="isTrue" class="btn btn-success" value="ถูก">
+                  <input type="submit" name="isTrue" class="btn btn-danger" value="ผิด">
+                  <input type="hidden" name="student_id" value="<%= result.student_id %>">
+                  <input type="hidden" name="group_id" value="<%= result.group_id %>">
+                  <input type="hidden" name="lesson_id" value="<%= result.lesson_id %>">
+                  <input type="hidden" name="problem_id" value="<%= result.problem_id %>">
                 </form>
               </div>
 
