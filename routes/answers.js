@@ -37,14 +37,15 @@ router.post('/checked', function(req, res, next) {
     var problem_id = req.body.problem_id;
     var checked = req.body.isTrue;
     if(checked == "ถูก") checked = true;
-    else checked = false
+    else checked = false;
     console.log(student_id, group_id, lesson_id, problem_id, checked);
-    // Answer.setCheckedAnswers(student_id, group_id, lesson_id, problem_id, function(err) {
-    //     res.redirect('back');
-    // });
+    Answer.setCheckedAnswers(student_id, group_id, lesson_id, problem_id, function(err) {
+        console.log('Answer.setCheckedAnswers')
+    });
     Student.giveScore(student_id, problem_id, function(err) {
+        console.log('Student.giveScore')
         res.redirect('back');
-    })
+    });
 });
 
 module.exports = router;

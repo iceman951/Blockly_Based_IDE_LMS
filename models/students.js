@@ -27,7 +27,10 @@ var studentSchema = mongoose.Schema({
     Student_Progress: [{
       learning: { type: Array},
       exercise: { type: Object}
-    }]
+    }],
+    Student_Score: [
+      { type: Object}
+    ]
 });
 var Student = module.exports = mongoose.model('students', studentSchema)
   
@@ -57,6 +60,5 @@ module.exports.giveScore = function(student_id, problem_id, callback) {
   var query = {
     Student_ID: student_id,
   }
-  console.log(student_id, problem_id)
-  Student.updateOne(query, {$set:{[`Student_Score.${problem_id}`] : true }}, callback);
-}
+  Student.updateOne(query, {$set:{[`Student_Score.${problem_id}`]: true }}, callback);
+} 
