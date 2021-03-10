@@ -9,8 +9,22 @@
 <body>
     <%- include('../layout'); -%>
     <div class="container">
-
-        <br>
+      <br>
+      <div class="row justify-content-between">
+        <div class="col-4">
+          <div class="row">
+            <div class="col"><h5>กลุ่มที่ <%= locals.section_id %></h5></div>
+          <div class="col"><p>จำนวนนักเรียน <%= locals.students.length %> คน</p></div>
+        </div>
+      </div>
+        <div class="col-2">
+          <% if(locals.students){%>
+            <form class="form-group" action="/answers/problem/<%= locals.section_id %>/101" method="get">
+              <input type="submit" name="" value="ตรวจแบบฝึกหัด" class="btn btn-success">
+            </form>
+            <% } %>
+        </div>
+      </div>
         <h5>รายชื่อนักเรียน</h5>
         <table class="table">
           <thead>
@@ -19,6 +33,7 @@
               <th scope="col">Name</th>
               <th scope="col">Email</th>
               <th scope="col">Progression</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -29,7 +44,12 @@
               <td><%= result.Student_ID %></td>
               <td><%= result.Student_Name %></td>
               <td><%= result.Student_Email %></td>
-              <td ><div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div></td>
+              <td><div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div></td>
+              <td>
+                <form action="/students/delete/<%= result.Student_ID %>" method="post">
+                  <input onclick="return confirm('ต้องการลบนักเรียนรหัส <%= result.Student_ID %> ใช่หรือไม่?');" type="submit" name="" value="ลบ" class="btn btn-danger">
+                </form>
+            </td>
             </tr>
             <% } %>
             <% } %>
@@ -37,21 +57,6 @@
         </table>
         <br>
 
-        <% if(locals.students){%>
-        <form class="form-group" action="/answers/problem/<%= locals.section_id %>/101" method="get">
-          <input type="submit" name="" value="ตรวจแบบฝึกหัด" class="btn btn-success">
-        </form>
-        <% } %>
-
-        <br>
-        <h5>ลบนักเรียน</h5>
-          <form class="form-group" action="/students/delete" method="post">
-            <div class="form-group">
-              <label for="">รหัสนักเรียน:</label>
-              <input type="text" name="student_id" value="" class="form-control">
-          </div>
-          <input type="submit" name="" value="ลบ" class="btn btn-danger">
-          </form>
       </div>
 </body>
 </html>
