@@ -18,11 +18,10 @@
         </div>
       </div>
         <div class="col-2">
-          <% if(locals.students){%>
             <form class="form-group" action="/answers/problem/<%= locals.section_id %>/101" method="get">
               <input type="submit" name="" value="ตรวจแบบฝึกหัด" class="btn btn-success">
+              <!-- <input type="hidden" name="studentsNumber" value="<%= locals.students.length %>"> -->
             </form>
-            <% } %>
         </div>
       </div>
         <h5>รายชื่อนักเรียน</h5>

@@ -24,12 +24,6 @@ router.get('/problem/:group_id/:id', function(req, res, next) {
     });
 });
 
-router.post('/', function(req, res, next) {
-    Student.replaceExerciseStatusByStudentIDandProblemID(req.params.student_id, req.params.problem_id, function(err){
-        res.redirect('back');
-    });
-});
-
 router.post('/checked', function(req, res, next) {
     var student_id = req.body.student_id;
     var group_id = req.body.group_id;
