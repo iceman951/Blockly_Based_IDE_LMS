@@ -14,28 +14,84 @@
     <br>
     <div class="container">
       <h5>คำตอบนักเรียน</h5>
-      <p>กลุ่ม <%= locals.group_id %> มีนักเรียนจำนวน <%=  %></p>
+      <p>กลุ่ม <%= locals.group_id %> </p>
 
+      <% var count101 = 0 %>
+      <% var count201 = 0 %>
+      <% var count202 = 0 %>
+      <% var count203 = 0 %>
+      <% var count301 = 0 %>
+
+      <% if(problem_number == "101") problem_number = "1.1"%>
+      <% if(problem_number == "201") problem_number = "2.1"%>
+      <% if(problem_number == "202") problem_number = "2.2"%>
+      <% if(problem_number == "203") problem_number = "2.3"%>
+      <% if(problem_number == "301") problem_number = "3.1"%>
+
+      <% for (var result of locals.answers){ %>
+        <% if(result.problem_id == "101" && result.checked == false) count101++ %>
+        <% if(result.problem_id == "201" && result.checked == false) count201++ %>
+        <% if(result.problem_id == "202" && result.checked == false) count202++ %>
+        <% if(result.problem_id == "203" && result.checked == false) count203++ %>
+        <% if(result.problem_id == "301" && result.checked == false) count301++ %>
+      <%}%>
       
+      <% if(count101 != 0) { %>
+        <p>กำลังตรวจข้อ <%= problem_number %> ยังไม่ตรวจจำนวน <%= count101 %> ข้อ</p> 
+      <% } %>
+
+      <% if(count201 != 0) { %>
+        <p>กำลังตรวจข้อ <%= problem_number %> ยังไม่ตรวจจำนวน <%= count201 %> ข้อ</p> 
+      <% } %>
+
+      <% if(count202 != 0) { %>
+        <p>กำลังตรวจข้อ <%= problem_number %> ยังไม่ตรวจจำนวน <%= count202 %> ข้อ</p> 
+      <% } %>
+
+      <% if(count203 != 0) { %>
+        <p>กำลังตรวจข้อ <%= problem_number %> ยังไม่ตรวจจำนวน <%= count203 %> ข้อ</p> 
+      <% } %>
+
+      <% if(count301 != 0) { %>
+        <p>กำลังตรวจข้อ <%= problem_number %> ยังไม่ตรวจจำนวน <%= count301 %> ข้อ</p> 
+      <% } %>
+
+      <% if(count203 != 0) { %>
+        <p>กำลังตรวจข้อ <%= problem_number %> ยังไม่ตรวจจำนวน <%= count203 %> ข้อ</p> 
+      <% } %>
+
+      <% if(count101 == 0 && count201 == 0 && count202 == 0 && count203 == 0 && count301 == 0) { %>
+        <p>ข้อ <%= problem_number %> ถูกตรวจครบทุกข้อแล้ว</p>
+      <% } %>
+
       <br>
       <div class='row'>
         <div class='col-2'>
           <div class="list-group">
-            <a href="/answers/lesson/<%= locals.group_id %>/1" class="list-group-item list-group-item-action list-group-item-primary">บทที่ 1</a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-primary">บทที่ 1</a>
             <a href="/answers/problem/<%= locals.group_id %>/101" class="list-group-item list-group-item-action">ข้อ 1.1</a>
-            <a href="/answers/lesson/<%= locals.group_id %>/2" class="list-group-item list-group-item-action list-group-item-primary">บทที่ 2</a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-primary">บทที่ 2</a>
             <a href="/answers/problem/<%= locals.group_id %>/201" class="list-group-item list-group-item-action">ข้อ 2.1</a>
             <a href="/answers/problem/<%= locals.group_id %>/202" class="list-group-item list-group-item-action">ข้อ 2.2</a>
             <a href="/answers/problem/<%= locals.group_id %>/203" class="list-group-item list-group-item-action">ข้อ 2.3</a>
-            <a href="/answers/lesson/<%= locals.group_id %>/3" class="list-group-item list-group-item-action list-group-item-primary">บทที่ 3</a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-primary">บทที่ 3</a>
             <a href="/answers/problem/<%= locals.group_id %>/301" class="list-group-item list-group-item-action">ข้อ 3.1</a>
           </div>
         </div>
         <div class='col-10'>
+
           <% for (var result of locals.answers){ %>
             <div class="row">
+              
+              <div calss="col">
+                
+                <p>รหัสนักเรียน: <%= result.student_id %></p>
+              </div>
+              
+
+
               <div class="col">
-                <div id="blocklyDiv" style="height: 250px; width: 700px;"></div>
+                <div id="blocklyDiv" style="height: 250px; width: 600px;"></div>
 
                 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
                   <category name="Logic" colour="%{BKY_LOGIC_HUE}">

@@ -19,8 +19,9 @@ router.get('/lesson/:group_id/:id', function(req, res, next) {
 
 router.get('/problem/:group_id/:id', function(req, res, next) {
     var group_id = req.params.group_id;
-    Answer.getAnswersByGroupIDandProblemID(group_id, req.params.id, function(err,answers){
-        res.render('groups/answers',{answers: answers, group_id});
+    var problem_number = req.params.id;
+    Answer.getAnswersByGroupIDandProblemID(group_id, problem_number, function(err,answers){
+        res.render('groups/answers',{answers: answers, group_id, problem_number});
     });
 });
 
