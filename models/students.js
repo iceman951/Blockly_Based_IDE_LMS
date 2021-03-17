@@ -24,13 +24,12 @@ var studentSchema = mongoose.Schema({
     Student_Section: {
         type: String
     },
-    Student_Progress: [{
+    Student_Progess: [{
       learning: { type: Array},
       exercise: { type: Object}
     }],
-    Student_Score: [
+    Student_Score: 
       { type: Object}
-    ]
 });
 var Student = module.exports = mongoose.model('students', studentSchema)
   

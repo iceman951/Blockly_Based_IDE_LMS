@@ -17,8 +17,8 @@
     <%- include('layout'); -%>
     <div class="container">
         <br>
-        <h5>บทเรียน</h5>
-
+        <h2>บทเรียน</h2>
+        <br>
           <tbody>
             <% if(locals.lessons){%>
                 <% for (var result of locals.lessons){ %>
@@ -37,8 +37,6 @@
                           </div>
                         </div>
                       </div>
-
-
                 <% } %>
             <% } %>
           </tbody>

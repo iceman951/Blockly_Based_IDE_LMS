@@ -13,8 +13,8 @@
       <div class="row justify-content-between">
         <div class="col-4">
           <div class="row">
-            <div class="col"><h5>กลุ่มที่ <%= locals.section_id %></h5></div>
-          <div class="col"><p>จำนวนนักเรียน <%= locals.students.length %> คน</p></div>
+            <div class="col"><h5>กลุ่มที่ <%= locals.section_id %></h5>
+              <p>จำนวนนักเรียน <%= locals.students.length %> คน</p></div>
         </div>
       </div>
         <div class="col-2">
@@ -23,6 +23,12 @@
               <!-- <input type="hidden" name="studentsNumber" value="<%= locals.students.length %>"> -->
             </form>
         </div>
+
+
+
+
+
+
       </div>
         <h5>รายชื่อนักเรียน</h5>
         <table class="table">
@@ -36,16 +42,21 @@
             </tr>
           </thead>
           <tbody>
-
+            
             <% if(locals.students){%>
             <% for (var result of locals.students){ %>
+
+              <% var count=0 %>
+              <% Object.values(result.Student_Score).forEach((i)=>{if(i==true){ count++}}) %>
+              <% var scoreLength = (Object.keys(result.Student_Score).length) %>
+
             <tr>
               <td><%= result.Student_ID %></td>
               <td><%= result.Student_Name %></td>
               <td><%= result.Student_Email %></td>
               <td>
                 <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" style="width: <%= (count/scoreLength)*100 %>%" aria-valuenow="<%= count/scoreLength %>" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               <td>
                 <form action="/students/delete/<%= result.Student_ID %>" method="post">
