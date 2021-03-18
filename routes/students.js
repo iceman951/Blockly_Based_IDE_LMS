@@ -10,8 +10,8 @@ router.get('/groups/:id', function(req, res, next) {
     });
 });
 
-router.post('/delete', function(req, res, next) {
-    var student_id = req.body.student_id;
+router.post('/delete/:student_id', function(req, res, next) {
+    var student_id = req.params.student_id;
     Student.deleteStudentByStudentID(student_id,function(err){
         res.redirect('back');
     });
